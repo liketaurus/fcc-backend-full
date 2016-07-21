@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('ui'));
 
 app.use(bodyParser.json());
-var port = 8080;
+var port = process.env.PORT;
 
 app.route('/')
     .get(function(req, res) {
