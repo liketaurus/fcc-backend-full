@@ -1,16 +1,15 @@
 var express = require('express');
-var app = express();
 var bodyParser = require('body-parser');
 var moment = require('moment');
+var app = express();
+var port = process.env.PORT;
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(express.static('ui'));
-
 app.use(bodyParser.json());
-var port = process.env.PORT;
+app.use(express.static('ui'));
 
 app.route('/')
     .get(function(req, res) {
@@ -18,18 +17,19 @@ app.route('/')
     });
 
 app.get('/:query', function(req, res) {
-    var date = parseInt(req.params.query);
+    var date = req.params.query;
     var unix = null;
     var natural = null;
 
-    if (date >= 0) {
-        unix = date;
-        natural = unixToNat(unix);
-    }
-
     if (moment(date, "MMMM D, YYYY").isValid()) {
-        unix = natToUnix(date);
-        natural = unixToNat(unix);
+        unix = naturalToUnix(date);
+        natural = unixToNatural(unix);
+    }
+    
+    var n= Number(date);
+    if (n >= 0) {
+        unix = n;
+        natural = unixToNatural(unix);
     }
 
     var dateObj = {
@@ -40,17 +40,15 @@ app.get('/:query', function(req, res) {
 
 });
 
-function natToUnix(date) {
+function naturalToUnix(date) {
     return moment(date, "MMMM D, YYYY").format("X");
 }
 
-function unixToNat(unix) {
+function unixToNatural(unix) {
     return moment.unix(unix).format("MMMM D, YYYY");
 }
 
 
-
-
 app.listen(port, function() {
-    console.log('Node.js listening on port ' + port);
+    console.log('Application started on port ' + port);
 });
