@@ -7,6 +7,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use(express.static('ui'));
+
 app.use(bodyParser.json());
 var port = 8080;
 
