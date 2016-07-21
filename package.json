@@ -1,12 +1,12 @@
 {
   "name": "timestamp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple timestamp micro service created in order to took a part in freeCodeCamp back-end certification",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Alexander Babich",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0"
