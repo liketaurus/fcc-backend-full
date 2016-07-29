@@ -4,7 +4,12 @@
   "description": "A simple timestamp micro service created in order to took a part in freeCodeCamp back-end certification",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liketaurus/fcc-backend-full.git"
   },
   "keywords": [
     "node",
@@ -21,7 +26,8 @@
     "moment": "^2.14.1"
   },
   "engines": {
-    "node": "4.4.5"
+    "node": "4.4.5",
+    "npm" : "3.10.5"
   }
 }
 
